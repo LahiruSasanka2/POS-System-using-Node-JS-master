@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Modern POS | IJSE</title>
+
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="css/AdminLTE.min.css">
+    <!-- AdminLTE Skins. Choose a skin from the css/skins
+         folder instead of downloading all of them to reduce the load. -->
+    <link rel="stylesheet" href="css/skins/_all-skins.min.css">
+
+    <!-- Google Font -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+    <style>
+        .dataTables_filter {
+            text-align: right !important;
+        }
+
+        .delete{
+            padding: 5px;
+        }
+
+        table tbody tr{
+            cursor: pointer;
+        }
+
+        table tbody tr td{
+            vertical-align: middle !important;
+        }
+
+        .selected-row{
+            background-color: rgba(0, 48, 70, 0.16) !important;
+        }
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="/" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
+            <span class="logo-mini"><b>P</b>OS</span>
+            <!-- logo for regular state and mobile devices -->
+            <span class="logo-lg"><b>Modern</b>POS</span>
+        </a>
+        <!-- Header Navbar: style can be found in header.less -->
+        <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                <span class="sr-only">Toggle navigation</span>
+            </a>
+        </nav>
+    </header>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu" data-widget="tree">
+                <li class="header">MAIN NAVIGATION</li>
+                <li>
+                    <a href="index.html">
+                        <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="manage-customers.html">
+                        <i class="fa fa-user"></i> <span>Manage Customers</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="manage-items.html">
+                        <i class="fa fa-list"></i> <span>Manage Items</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="newOrders.html">
+                        <i class="fa fa-shopping-cart"></i> <span>Place Order</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <h1>
+                Manage Customers
+                <small>Add, Update, Delete and Search Customers</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Main row -->
+            <div class="row">
+
+                <div class="col-12 col-md-4">
+
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Customer Information</h3>
+                        </div>
+                        <!-- /.box-header -->
+                        <!-- form start -->
+                        <form role="form">
+                            <div class="box-body">
+                                <div class="form-group">
+                                    <label>Customer ID</label>
+                                    <input name="id" type="text" class="form-control" id="txtCustomerId"
+                                           placeholder="Enter Customer ID">
+                                </div>
+                                <div class="form-group">
+                                    <label>Customer Name</label>
+                                    <input name="name" type="text" class="form-control" id="txtCustomerName"
+                                           placeholder="Enter Customer Name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Customer Address</label>
+                                    <input name="address" type="text" class="form-control" id="txtCustomerAddress"
+                                           placeholder="Enter Customer Address">
+                                </div>
+                            </div>
+                            <!-- /.box-body -->
+
+                            <div class="box-footer">
+                                <button type="button" id="btnSave" class="btn btn-primary">Save</button>
+                                <button type="reset" class="btn btn-danger">Clear</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.box -->
+
+                </div>
+                <div class="col-12 col-md-8">
+
+                    <div class="box">
+                        <div class="box-body">
+                            <table id="tblCustomers" class="table table-bordered table-hover">
+                                <colgroup>
+                                    <col style="width: 50px; text-align: center;">
+                                    <col>
+                                    <col>
+                                    <col style="width: 50px;">
+                                </colgroup>
+                                <thead>
+                                <tr>
+                                    <th style="text-align: center;">ID</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th style="text-align: center;">
+                                        Remove
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.row (main row) -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 1.0.0
+        </div>
+        <strong>Copyright &copy; 2019 <a href="http://ijse.lk">DEP - 2019</a>.</strong> All rights
+        reserved.
+    </footer>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="js/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="js/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.7 -->
+<script src="js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="js/jquery.dataTables.min.js"></script>
+<script src="js/dataTables.bootstrap.min.js"></script>
+<!-- Slimscroll -->
+<script src="js/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="js/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="js/adminlte.min.js"></script>
+<script>
+    $(function () {
+        $('#tblCustomers').DataTable({
+            'paging'      : true,
+            'lengthChange': false,
+            'searching'   : true,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Search Customers..."
+            }
+        });
+    });
+</script>
+<script>
+
+    var SERVER_URL = "http://localhost:3000";
+
+    $("#btnSave").click(function(){
+
+        if ($("#txtCustomerId").attr("disabled")){
+
+            var customer = {
+                id: $("#txtCustomerId").val(),
+                name: $("#txtCustomerName").val(),
+                address: $("#txtCustomerAddress").val()
+            };
+
+            var ajaxConfig = {
+                method: "PUT",
+                url: SERVER_URL + "/api/v1/customers/" + $("#txtCustomerId").val(),
+                async: true,
+                contentType: "application/json",
+                data: JSON.stringify(customer)
+            }
+
+            $.ajax(ajaxConfig).done(function(response,statusText,jxhr){
+                alert("Updated Successfully");
+                loadAllCustomers();
+                $('button[type="reset"]').trigger("click");
+            }).fail(function(jxhr,statusText,error){
+               alert("Unable to update the customer, try again");
+               console.log(error);
+            });
+
+        }else{
+
+            var customer = {
+                id: $("#txtCustomerId").val(),
+                name: $("#txtCustomerName").val(),
+                address: $("#txtCustomerAddress").val()
+            };
+
+            var ajaxConfig = {
+                method: "POST",
+                url: SERVER_URL + "/api/v1/customers/",
+                async: true,
+                contentType: "application/json",
+                data: JSON.stringify(customer)
+            }
+
+            $.ajax(ajaxConfig).done(function(response,statusText,jxhr){
+                alert("Added Successfully");
+                loadAllCustomers();
+                $('button[type="reset"]').trigger("click");
+            }).fail(function(jxhr,statusText,error){
+                alert("Unable to save the customer, try again");
+                console.log(error);
+            });
+
+
+        }
+
+    });
+
+    $('button[type="reset"]').click(function(){
+       $("#tblCustomers tbody tr").removeClass("selected-row");
+        $("#txtCustomerId").attr("disabled",false);
+    });
+
+    $(document).ready(function(){
+
+        loadAllCustomers();
+
+    });
+
+    function loadAllCustomers(){
+
+        $("#tblCustomers").dataTable().fnDestroy();
+        $("#tblCustomers tbody tr").remove();
+
+        var ajaxConfig = {
+            method: "GET",
+            url:SERVER_URL + "/api/v1/customers",
+            async: true
+        };
+
+        $.ajax(ajaxConfig).done(function(customers,statusText,jxhr){
+
+            customers.forEach(function(customer){
+
+                var html = `<tr>
+                                <td>${customer.id}</td>
+                                <td>${customer.name}</td>
+                                <td>${customer.address}</td>
+                                <td><button type="button" class="btn btn-success delete">Delete</button></td>
+                            </tr>`;
+
+                $("#tblCustomers tbody").append(html);
+
+                $("#tblCustomers tbody tr").off("click");
+                $("#tblCustomers tbody tr").click(function(){
+                    $("#tblCustomers tbody tr").removeClass("selected-row");
+                    $(this).addClass("selected-row");
+
+                    $("#txtCustomerId").val($(this).find("td:first-child").text());
+                    $("#txtCustomerId").attr("disabled",true);
+                    $("#txtCustomerName").val($(this).find("td:nth-child(2)").text());
+                    $("#txtCustomerAddress").val($(this).find("td:nth-child(3)").text());
+
+                });
+
+                $("button.delete").off("click");
+                $("button.delete").click(function(eventData){
+
+                    eventData.stopPropagation();
+
+                    var row = $(this).parents("tr");
+                    var customerId = (row.find("td:first-child").text());
+
+                    if (confirm("Are you sure to delete this customer?")){
+
+                        var ajaxConfig = {
+                            method : "DELETE",
+                            url: SERVER_URL + "/api/v1/customers/" + customerId,
+                            async: true
+                        }
+
+                        $.ajax(ajaxConfig).done(function(response,statusText,jxhr){
+
+                            $(row).remove();
+
+                        }).fail(function(jxhr,statusText,error){
+
+                            console.log(jxhr.responseText);
+
+                        });
+
+                    }
+                });
+
+            });
+
+            $('#tblCustomers').DataTable({
+                'paging'      : true,
+                'lengthChange': false,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : true,
+                'pageLength'  : 5,
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search Customers..."
+                }
+            });
+
+        }).fail(function(jxhr,statusText,error){
+            console.log(error);
+        });
+
+
+    }
+
+</script>
+</body>
+</html>
